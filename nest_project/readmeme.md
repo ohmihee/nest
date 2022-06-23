@@ -45,6 +45,15 @@ main.ts를 시작점으로 하여 프로그램이 실행되고, 실행된 후 lo
 
 # 직접 구현하여 보기
 ## 모듈 생성
+// nest는 nestcli로 대부분의 기본적인 틀을 구현하여 준다.
+> neset [기능] [생성하려는것] [생성하려는것의이름] --[옵션]
+
+> nest g module boards
+- nest : using nestcli
+- g : generate
+- module : schematic that i want to create
+- borads : name of the schematic
+
 목표 boardModule과 AuthModule 구현
 1. BaordModule 구성
 - BoardController
@@ -58,14 +67,22 @@ main.ts를 시작점으로 하여 프로그램이 실행되고, 실행된 후 lo
 - AuthService
 - UserRespository
 - JWT, Passport
-// nest는 nestcli로 대부분의 기본적인 틀을 구현하여 준다.
-> nest g module boards
-- nest : using nestcli
-- g : generate
-- module : schematic that i want to create
-- borads : name of the schematic
 
+### @Controller
+컨트롤러는 @Controller 데코레이터를 클래스를 데코레이션하여 사용한다. @Controller([경로])  ex) @Controller('/user')
 
+nest g controller boards --no-spec
+- nest
+- g
+- controller 
+- boards
+// -no-spec: 테스트를 위한 소스 코드 생성x
+
+#### Handler
+- @Get
+- @Post
+- @Delete 등
+컨트롤러 클래스 내의 단순 메서드이다.
 
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
 
