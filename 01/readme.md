@@ -38,7 +38,12 @@ nestjs 프로젝트를 위한 대부분의 서비스 관련 로직이 들어가 
 # 흐름
 main.ts -> app.module.ts -> app.controller.ts, app.service.ts
 main.ts를 시작점으로 하여 프로그램이 실행되고, 실행된 후 localhost:3000으로 들어오면 controller의 getHello()가 작동하여 'Hello World'를 응답하는 service의 getHello를 요청하고 controller는 service의 getHello를 최종적으로 응답하여 주게 된다. 
-// ex) express와 비교하여 설명하면, main.ts는 흔히 index.ts로 app.listen을 통해 서버를 실행하여 주는 역
+// ex) express와 비교하여 설명하면, main.ts는 흔히 index.ts로 app.listen을 통해 서버를 실행하여 주는 역할과 같고, app.module.ts는 server.ts에서 import express from 'express'.... 이와 같이 서버의 기본 설정을 해주는 부분이라 생각하면 되고, app.controller는 라우터 역할, app.service는 실질적인 서비스 로직이 짜여있는 곳이라 이해하면 될 것 같다.
+
+# decorator (데코레이터)
+이름 말 그대로 다른 객체를 꾸며주는 역할을 하는 함수이다.
+
+
 
 18.54
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
