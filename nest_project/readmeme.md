@@ -46,6 +46,7 @@ main.ts를 시작점으로 하여 프로그램이 실행되고, 실행된 후 lo
 # 직접 구현하여 보기
 ## 모듈 생성
 // nest는 nestcli로 대부분의 기본적인 틀을 구현하여 준다.
+// nest cli를 통해 컨트롤러나 서비스 생성시에는 모듈 코드 안에 자동으로 추가도 해주나.
 > neset [기능] [생성하려는것] [생성하려는것의이름] --[옵션]
 
 > nest g module boards
@@ -71,12 +72,19 @@ main.ts를 시작점으로 하여 프로그램이 실행되고, 실행된 후 lo
 ### @Controller
 컨트롤러는 @Controller 데코레이터를 클래스를 데코레이션하여 사용한다. @Controller([경로])  ex) @Controller('/user')
 
-nest g controller boards --no-spec
-- nest
-- g
-- controller 
-- boards
-// -no-spec: 테스트를 위한 소스 코드 생성x
+> nest g controller boards --no-spec
+- nest : using nestcli
+- g : generate
+- controller : controller schematic
+- boards : name of the schematic
+// --no-spec: 테스트를 위한 소스 코드 생성x
+
+> nest g service boards --no-spec
+- nest: using nestcli
+- g: generate
+- service: service schematic
+- boards: name of the schematic
+// --node-spec
 
 #### Handler
 - @Get
