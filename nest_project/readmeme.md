@@ -86,6 +86,9 @@ main.ts를 시작점으로 하여 프로그램이 실행되고, 실행된 후 lo
 - boards: name of the schematic
 // --node-spec
 
+* 서비스를 컨트롤러에서 사용하기 위해서는 종속성 주입(Dependency Injection)을 해주어야 한다.
+// 종속성 주입은 컨트롤러의 클래스의 constructor()를 통해 한다.
+
 #### Handler
 - @Get
 - @Post
