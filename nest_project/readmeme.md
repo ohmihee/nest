@@ -95,5 +95,25 @@ main.ts를 시작점으로 하여 프로그램이 실행되고, 실행된 후 lo
 - @Delete 등
 컨트롤러 클래스 내의 단순 메서드이다.
 
+#### Provider? 
+nestjs의 기본 개념이다. Nest클래스는 서비스, 리포지토리, 팩토리 해러 등 provider로 취급될 수 있다.
+Provider의 주요 아이디어틑 종속성으로 주입할 수 있다는 것이다. Provider를 사용하기 위해서는 nest에 등록해주어야 하는데, 이는 module 파일의 providers 항목에 사용하려는 provider를 넣으면 된다.
+boards.module.ts 파일 참고
+
+#### Service?
+@Injectable 데코레이터를 사용하여 모듈에 제공된다. 컨트롤러에서 데이터의 유효성 체크, 데이터베이스 crud 등의 작업을 수행한다.
+
+##### 서비스 crud 작업
+- nestjs에서는 @Body를 통해 body 값을 가져올 수 있다.
+- @Param : 경로에서 값 가져올 때
+ex )   @Param() params: string[]   // 여러 값 가져오는 경우
+ex )   @Param('id') id: string   // 한 개의 값만 가져오는 경우
+- @Body : body 값 가져올 때
+
+
+###### DTO (Data Transfer Object)
+계층 간 데이터 교환을 위한 객체, DB에서 데이터를 얻어 사용하는 객체를 의미한다.
+DTO는 interface나 class를 통해 만드는데 nestjs에서는 class를 이용할 것을 권장한다.
+
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
 
