@@ -7,12 +7,14 @@ import {
     ValidationPipe 
 } from '@nestjs/common';
 import { BoardsService } from './boards.service';
-import { Board, BoardStatus } from './board.model'
+import { BoardStatus } from './board-status.enum'
 import { CreateBoardDto } from './dto/create-board';
 import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe';
 
 @Controller('boards')
 export class BoardsController {
+    /*
+    // boardservice를 사용하기 위해 컨트롤러에 종속성 주입, 아래와 같이 작성
     constructor(private boardService: BoardsService) {}
     // 접근 제한자(public, protected, private)를 생성자 (constructor) 파라미터에
     // 선언하면 접근 제한자가 사용된 생성자 파라미터는 암묵적으로 클래스 프로퍼티로 선언된다.
@@ -77,6 +79,7 @@ export class BoardsController {
     ): Board {
         return this.boardService.updateBoardStatus(id, status)
     }
+    */
 
 
 }

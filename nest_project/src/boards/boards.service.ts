@@ -1,13 +1,16 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'crypto';
-import { Board, BoardStatus } from './board.model'
+import { BoardStatus } from './board-status.enum'
 import { v1 as uuid } from 'uuid'
 import { CreateBoardDto } from './dto/create-board';
+import { InjectRepository } from '@nestjs/typeorm';
+import { BoardRepository } from './board.repository';
 // uuid의 여러 버전 중 버전 1을 uuid이름으로 가져옴
 
 // @Injectable() 데코레이터를 통해 다른 컴포넌트에서 이 서비스를 사용가능하게 만들어준다
 @Injectable()
 export class BoardsService {
+    /*
     private boards: Board[] = [
         {
             id:'1',
@@ -61,4 +64,15 @@ export class BoardsService {
         board.status = status;
         return board;
     }
+    */
+
+    // repository 사용을 위해 종속성 주입, 컨트롤러에서 서비스를 종속성 주입할 때와는 다르게 아래와 같이 사용
+    constructor(
+        @InjectRepository(BoardRepository)
+        private boardRepository: BoardRepository
+        // @InjectRespository() 데코레이터를 통해 이 서비스에서 BoardRespository를 boardRepository 변수에 담아 사용할 것임을 알림
+    ) {
+
+    }
 }
+ 
