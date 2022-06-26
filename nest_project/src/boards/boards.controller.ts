@@ -87,6 +87,11 @@ export class BoardsController {
     return this.boardService.getBoardById(id);
    }
 
+   @Post('/')
+   @UsePipes(ValidationPipe)
+   createBoard(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
+    return this.boardService.createBoard(createBoardDto)
+   } 
 
 }
 
