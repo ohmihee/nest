@@ -81,7 +81,9 @@ export class BoardsService {
         return found;
     }
 
-    async createBoard(createBoardDto: CreateBoardDto) : Promise<Board> {
+    createBoard(createBoardDto: CreateBoardDto) : Promise<Board> {
+        
+        /*
         const {title, description} = createBoardDto;
         const board = this.boardRepository.create({
             title,
@@ -92,6 +94,24 @@ export class BoardsService {
         // .save()데이터베이스에 저장하는 것.
         // .save([board, user]) 이와 같이 여러개도 가능
         return board
+        */
+
+        return this.boardRepository.createBoard(createBoardDto);
+    }
+
+    async deleteBoard(id: number) : Promise<void> {
+        const result = await this.boardRepository.delete(id)
+        console.log(result,'result');
+        if(result.affected === 0) {
+            throw new NotFoundException(`Can't find Board with id ${id}`)
+        }
+    }
+
+    async updateBoardStatus(id: number, status: BoardStatus): Promise<Board> {
+        const board = await this.getBoardById(id)
+        board.status = status;
+        await board.save();
+        return board;
     }
 }
  

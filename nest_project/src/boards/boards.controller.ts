@@ -4,7 +4,8 @@ import {
     Delete, Get, Patch, Post, 
     Param,
     UsePipes, 
-    ValidationPipe 
+    ValidationPipe, 
+    ParseIntPipe
 } from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import { BoardStatus } from './board-status.enum'
@@ -93,6 +94,19 @@ export class BoardsController {
     return this.boardService.createBoard(createBoardDto)
    } 
 
+    @Delete('/:id')
+    deleteBoard(@Param('id', ParseIntPipe) id: number): Promise<void> {
+        // ParseIntPipe 해당 값을 int 타입으로
+        return this.boardService.deleteBoard(id)
+    }
+
+    @Patch('/:id/status')
+    updateBoardStatus(
+        @Param('id', ParseIntPipe) id: number,
+        @Body('status', BoardStatusValidationPipe) status: BoardStatus,
+    ): Promise<Board> {
+        return this.boardService.updateBoardStatus(id, status)
+    }
 }
 
 /*s
