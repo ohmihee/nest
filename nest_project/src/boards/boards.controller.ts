@@ -1,7 +1,15 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { 
+    Body, 
+    Controller, 
+    Delete, Get, Patch, Post, 
+    Param,
+    UsePipes, 
+    ValidationPipe 
+} from '@nestjs/common';
 import { BoardsService } from './boards.service';
-import { Board } from './board.model'
+import { Board, BoardStatus } from './board.model'
 import { CreateBoardDto } from './dto/create-board';
+import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe';
 
 @Controller('boards')
 export class BoardsController {
@@ -20,7 +28,9 @@ export class BoardsController {
         return this.boardService.getAllBoards()
     }
 
-    @Post()
+    @Post('/')
+    //handler-level의 pipe
+    @UsePipes(ValidationPipe)
     createBoard(
         // @Body('title') title: string,
         // @Body('description') description: string
@@ -30,12 +40,45 @@ export class BoardsController {
         
     }
 
-    @Get('/id')
+    @Get('/:id')
     getBoardById(
         @Param('id') id: string
     ): Board {
         return this.boardService.getBoardById(id)
     }
+
+    @Delete('/:id')
+    deleteBoard(
+        @Param('id') id: string
+    ): void {
+        this.boardService.deleteBoard(id)
+    }
+
+    @Patch('/:id/status')
+    updateBoard(
+        @Param('id') id: string,
+        @Body('status') status: BoardStatus
+    ): Board {
+        return this.boardService.updateBoardStatus(id, status)
+    }
+
+    @Post()
+    @UsePipes(ValidationPipe)
+    testPipe(
+        @Body() createBoardDto: CreateBoardDto
+    ):Board {
+        return this.boardService.createBoard(createBoardDto)
+    }
+
+    @Patch('/:id/status/test')
+    updateBoardStatus (
+        @Param('id') id: string,
+        @Body('status', BoardStatusValidationPipe) status: BoardStatus
+    ): Board {
+        return this.boardService.updateBoardStatus(id, status)
+    }
+
+
 }
 
 /*s

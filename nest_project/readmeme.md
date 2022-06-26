@@ -115,5 +115,82 @@ ex )   @Param('id') id: string   // 한 개의 값만 가져오는 경우
 계층 간 데이터 교환을 위한 객체, DB에서 데이터를 얻어 사용하는 객체를 의미한다.
 DTO는 interface나 class를 통해 만드는데 nestjs에서는 class를 이용할 것을 권장한다.
 
+# Pipe
+nestjs에서 파이프는 @Injectable () 데코레이터로 주석이 달린 클래스이다.
+Pipe는 데이터변환과 데이터 유효성 확인을 위해 사용된다.
+즉 요청이 들어오면 거치게 되는 미들웨어라고 생각하면 쉽다.
+
+* Data Transformation (데이터 변환)
+입력 데이터를 형식을 바꾸어주는 것
+ex) number타입을 스트링 형식으로 바꾸어 주거나, 토큰 형식으로 온 값에서 본래의 값을 추출해내거나
+
+* Data Validattion (데이터 유효성 확인)
+입력 데이터의 형식이 유효한것이 맞는지 확인하는 것
+ex) 10 글자 이상의 요청이 들어와야할때 입력 값이 10글자 이상이 맞는지
+
+- Handler-level Pipes
+// controller.ts 파일에서 @usePipes 데코레이터를 통해 사용된다.
+// 해당 파이프는 해당 컨트롤러의 경로의 모든 값에 적용된다.
+- Parameter-level Pipes
+// 특정 파라미터에만 적용된다.
+- Global-level Pipes 
+// 서비스의 모든 요청에 적용된다.
+// 가장 상단의 main.ts 파일에서 적용된다.
+````
+async function bootstrap() {
+    const app = await NsetFactory.create(AppModule);
+    await app.listen(3000)
+}
+````
+
+* nestjs에서 기본적으로 사용가능한 내장 파이프 종류
+- ValidationPipe
+- ParseIntPipe
+- ParseBoolPipe
+- ParseUUIDPipe
+- DefaultValuePipe
+
+// npm i class-validator class-transformer --save
+// docs 문서 확인
+
+## 커스텀 파이프 구현
+- transform([value], [metadata])
+value : 입력값
+metadata :  입력값에 대한 메타 데이터를 포함한 객체
+
+# class property
+- readonly : 읽기 전용, 클래스 외부에서 접근은 가능하지만, 해당 클래스의 값을 변경할 수는 없다.
+
+
+
+# postgresSql 설치
+pgAdmin : https://www.pgadmin.org/download
+설치 : brew install postgresql
+설치확인 : postgres --version
+
+brew services start postgresql
+
+# TypeORM (Object Relational Mapping)
+nodejs에서 실행되는 타입스크립트로 작성된 객체관계형 매퍼 라이브러리
+TypeORM은 mysql, postgresql mariadb, mssql server, oracle, websql등을 지원한다.
+> npm i pg typeorm @nestjs/typeorm
+// 참고 문서 : https://docs.nestjs.com/techniques/database
+// configs/typeorm.config.ts 파일 참고
+// postgres 연결을 위한 기본 설정을 해둔 파일
+
+*.entity.ts 파일 : 테이블 생성을 위한 정보가 담긴 파일
+## Repository
+엔터티 개체와 함께 작동하며, 엔티티 찾기, 삽인, 업데이트 삭제 등의 작업을 수행.
+공식 문서 : http://typeorf.delightful.studio/classes/_repository_repository_repository.html
+* repository pattern
+// 데이터베이스와 관련한 작업(crud)을 서비스가 아닌 repository에서 별도로 처리하는 형태
+ex) user -> request -> controller -> service -> repository -> service -> controller -> response
+1. 리포지토리 파일 생성
+2. 생성한 리포지토리 파일에 클래스 생성
+@EntityRepository() 
+// 클래스를 사용자 정의 저장소로 선언하는데 사용된다.
+
+# 기타 함수 
+[Array].index.of([value]) : 해당 배열 내에서 value의 index를 추출해준다. 배열에 없는 값을 value에 넣으며 -1를 출력한다.
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
 
