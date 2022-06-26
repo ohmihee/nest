@@ -88,6 +88,9 @@ export class BoardsService {
             description,
             status: BoardStatus.PUBLIC
         })
+        await this.boardRepository.save(board);
+        // .save()데이터베이스에 저장하는 것.
+        // .save([board, user]) 이와 같이 여러개도 가능
         return board
     }
 }
