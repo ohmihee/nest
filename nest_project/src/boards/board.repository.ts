@@ -1,3 +1,4 @@
+import { User } from "src/auth/user.entity";
 import { EntityRepository, Repository } from "typeorm";
 import { BoardStatus } from "./board-status.enum";
 import { Board } from './board.entity';
@@ -9,7 +10,7 @@ import { CreateBoardDto } from "./dto/create-board";
 // > npm install typeorm@0.2
 @EntityRepository(Board)
 export class BoardRepository extends Repository<Board> {
-    async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+    async createBoard(createBoardDto: CreateBoardDto, user: User): Promise<Board> {
         const {title, description} = createBoardDto;
         /*
         const board = new Board();
@@ -20,7 +21,8 @@ export class BoardRepository extends Repository<Board> {
        const board = this.create({
             title,
             description,
-            status: BoardStatus.PUBLIC
+            status: BoardStatus.PUBLIC,
+            user
        })
        // BoardResponsitory 클래스 내에 존재하므로, 그냥 this만으로 사용가능.
         //await this.save(board);
