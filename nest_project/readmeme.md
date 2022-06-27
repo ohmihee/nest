@@ -209,6 +209,14 @@ cli를 통해 모듈 컨트롤러 서비스 생성
 - @nestjs/passport: nestjs에서 passport를 사용하기 위해 필요한 모듈
 - passport 모듈
 - jwt : jwt 모듈
+
+# nestjs 미들웨어
+- Pipes : 요청값 유효성 검사 및, 페이로드 변환을 위해 사용됨, 데이터를 예상한 대로 직렬화
+- Filters : 오류 처리 미들웨어, 특정 오류 처리기를 사용할 경로와 각 경로 주변의 복잡성 관리방법 알 수 있다.
+- Guards : 인증 미들웨서, 지정된 경로로 통과할 수 있는 사람과, 허용되지 않는 사람을 서버에 알려준다.
+- Intercetptors : 인터셉터는 응답 매핑 및 캐시 관리와 함께 요청 로깅과 같은 전후 미들웨어이다. 각 요청 전후에 이를 실행한다.
+* 미들웨어 요청되는 순서 : middleware -> guard -> interceptor(before) -> controller -> interceptor(after) ->filter(if application) -> client 
+
 # 기타 함수 
 [Array].index.of([value]) : 해당 배열 내에서 value의 index를 추출해준다. 배열에 없는 값을 value에 넣으며 -1를 출력한다.
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
