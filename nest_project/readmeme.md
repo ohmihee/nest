@@ -198,7 +198,17 @@ cli를 통해 모듈 컨트롤러 서비스 생성
 > nest g controller auth --no-spec
 > nest g service auth --no-spec
 
+# jwt(json web token)
+- header : 토큰에 대한 메타데이터를 포함.(타입, 해싱 알고리즘, sha256, rsa)
+- payload : 유저 정보(issuer), 만료 기간 (expiration time)
+- verify signature : 서명
 
+* passport를 이용하여 구현
+> npm i @nestjs/jwt @nestjs/passport passport passport-jwt 
+- @nestjs/jwt : nestjs에서 jwt를 사용하기 위해 필요한 모듈
+- @nestjs/passport: nestjs에서 passport를 사용하기 위해 필요한 모듈
+- passport 모듈
+- jwt : jwt 모듈
 # 기타 함수 
 [Array].index.of([value]) : 해당 배열 내에서 value의 index를 추출해준다. 배열에 없는 값을 value에 넣으며 -1를 출력한다.
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
