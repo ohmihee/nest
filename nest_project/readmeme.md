@@ -190,6 +190,15 @@ ex) user -> request -> controller -> service -> repository -> service -> control
 @EntityRepository() 
 // 클래스를 사용자 정의 저장소로 선언하는데 사용된다.
 
+----
+
+# auth
+cli를 통해 모듈 컨트롤러 서비스 생성
+> nest g module auth
+> nest g controller auth --no-spec
+> nest g service auth --no-spec
+
+
 # 기타 함수 
 [Array].index.of([value]) : 해당 배열 내에서 value의 index를 추출해준다. 배열에 없는 값을 value에 넣으며 -1를 출력한다.
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
