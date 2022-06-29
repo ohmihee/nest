@@ -217,6 +217,14 @@ cli를 통해 모듈 컨트롤러 서비스 생성
 - Intercetptors : 인터셉터는 응답 매핑 및 캐시 관리와 함께 요청 로깅과 같은 전후 미들웨어이다. 각 요청 전후에 이를 실행한다.
 * 미들웨어 요청되는 순서 : middleware -> guard -> interceptor(before) -> controller -> interceptor(after) ->filter(if application) -> client 
 
+# 로그
+- Log : 중요한 정보의 범용 로깅
+- Warning : 치명적이지않거나 파괴적이지 않은 처리되지 않은 문제
+- Error : 치명적이지않거나 파괴적인 처리되지 않은 문제
+- Debug : 오류 발생시 로직을 디버그하는데 도움이 되는 유용한 정보
+- Verbose : 응용 프로그램의 동작에 대한 통찰력을 제공하는 정보로, 운영자용
+
+5:43:37
 # 기타 함수 
 [Array].index.of([value]) : 해당 배열 내에서 value의 index를 추출해준다. 배열에 없는 값을 value에 넣으며 -1를 출력한다.
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129

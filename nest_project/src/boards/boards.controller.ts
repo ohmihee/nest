@@ -6,7 +6,8 @@ import {
     UsePipes, 
     ValidationPipe, 
     ParseIntPipe,
-    UseGuards
+    UseGuards,
+    Logger
 } from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import { BoardStatus } from './board-status.enum'
@@ -20,6 +21,7 @@ import { User } from 'src/auth/user.entity';
 @Controller('boards')
 @UseGuards(AuthGuard())
 export class BoardsController {
+    private logger = new Logger('BoardController')
     constructor(private boardService: BoardsService) {}
     /*
     // boardservice를 사용하기 위해 컨트롤러에 종속성 주입, 아래와 같이 작성
@@ -99,6 +101,9 @@ export class BoardsController {
     @Body() createBoardDto: CreateBoardDto,
     @GetUser()user: User
     ): Promise<Board> {
+        this.logger.verbose(`User ${user.username} creating a new board
+            Payload: ${JSON.stringify(createBoardDto)}
+        `)
     return this.boardService.createBoard(createBoardDto, user)
    } 
 
@@ -125,7 +130,10 @@ export class BoardsController {
     }
 
     @Get()
-    getAllTask(): Promise<Board[]> {
+    getAllBoard(
+        @GetUser() user: User
+    ): Promise<Board[]> {
+        this.logger.verbose(`User ${user.username} trying to get all boards`);
         return this.boardService.getAllBoards()
     }
 
@@ -133,6 +141,7 @@ export class BoardsController {
     getAllBoardByUser(
         @GetUser() user: User
     ): Promise<Board[]>{
+        this.logger.verbose(`User ${user.username} trying to get all boards`);
         return this.boardService.getOneBoardsByUser(user)
     }
 
