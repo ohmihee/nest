@@ -1,0 +1,5 @@
+db:
+  synchronzie: false
+
+jwt:
+ secret: 'realsecret'

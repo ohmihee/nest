@@ -224,7 +224,27 @@ cli를 통해 모듈 컨트롤러 서비스 생성
 - Debug : 오류 발생시 로직을 디버그하는데 도움이 되는 유용한 정보
 - Verbose : 응용 프로그램의 동작에 대한 통찰력을 제공하는 정보로, 운영자용
 
-5:43:37
+# 설정 (Configuration)
+## Codebase vs Enviroment Variables(환경변수)
+- Codebase : port와 같이 노출되어도 상관이 없는 정보들
+- 환경 변수 : 비밀번호나 api key와 같이 노출되어서는 안되는 정보.
+// 윈도우의 경우에는 win-node-env 설치해줌
+> npm i -g win-node-env
+// 윈도우와 맥 모두에서 config 설치
+> npm i config --save
+
+루트 디렉토리에서 config 폴더를 생성한 후에 그 안에 JSON 또는 YAML 형식의 파일을 생성한다. 
+// config/default.json or config/default.yaml
+// 확자자명은 yml이든 yaml이든 같다.
+// yaml 형식은 띄어쓰기에 따라 내용이 설정되므로, 띄어쓰기를 맞추어서 해주어야 한다.
+
+config 폴더 안에 
+- default.yml : 기본 설정, 개발 환경, 운영 환경 모두에서 공통적으로 적용되는 것,
+- development.yml : 개발 환경에서 필요한 정보
+- production.yml : 운영 환경에서 필요한 정보
+파일들을 생성
+
+
 # 기타 함수 
 [Array].index.of([value]) : 해당 배열 내에서 value의 index를 추출해준다. 배열에 없는 값을 value에 넣으며 -1를 출력한다.
 // https://www.youtube.com/watch?v=3JminDpCJNE&list=RDCMUCFyXA9x8lpL3EYWeYhj4C4Q&start_radio=1&rv=3JminDpCJNE&t=129
