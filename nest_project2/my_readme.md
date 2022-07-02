@@ -31,6 +31,25 @@ user request - controller -> service -> controller -> user
 모듈 : @Module 데코레이터로 주석이 달린 클래스
 - @Module() 데코레이터는 Nest 애플리케이션 구조 구성을 사용하는데 사용하는 메타 데이터를 제공한다.
 -------------------------------------------------
+// 기본부터 시작하기 전에 app.service.ts, app.controller.ts, app.controller.spec.ts 파일을 지원준다.
+// app.module.ts 파일의 경우에는 controllers와 providers 부분을 지워준다.
+// test 폴더를 지원준다.
+3. 모듈 생성
+nest 에서는 기본적으로 명령어를 통해 모듈을 생성한다.
+nest g module boards
+- nest : using nestcli  // nestcli를 사용하겠다.
+- g : generate // 생성할 것이다.
+- module : schematic that i want to create // 어떤 유형을 것을 생성할 것인지, 모듈을 생성할 것이다. 
+- boards : name of the schematic // 생성되는 모듈의 명칭
+
+위의 명령어 실행시 boards.module.ts 파일이 존재하는 boards라는 폴더가 생성된다.
+
+controller?
+사용자의 요청에 대해 응답하는 부분.
+- @Controller 데코레이터를 통해 사용한다.
+
+4. 생성된 모듈 안에 컨트롤러 파일 생성
+
 
 
 
