@@ -144,4 +144,7 @@ controller.ts 파일 참고
 8. 모델 정의하기
 // 테이블에 대한 정의
 - board.model.ts 파일 생성
+- 서비스 파일과, 컨트롤러 파일 등 해당 타입이 들어가는 곳에 추가해준다.
 
+https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
+1:16:19
