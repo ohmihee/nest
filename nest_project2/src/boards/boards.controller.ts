@@ -43,8 +43,8 @@ export class BoardsController {
         return this.boardsService.deleteBoardById(id)
     }
 
-    @Patch('/:id')
-    updateBoardStatus(@Param('id') id: string, @Param('status') status: BoardStatus):Board{
+    @Patch('/:id/status')
+    updateBoardStatus(@Param('id') id: string, @Body('status') status: BoardStatus):Board{
         return this.updateBoardStatus(id, status);
     }
 
