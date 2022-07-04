@@ -8,6 +8,4 @@ import { BoardsService } from './boards.service';
 })
 export class BoardsModule {
 
-
-
 }

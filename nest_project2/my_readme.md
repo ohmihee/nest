@@ -141,6 +141,33 @@ controller.ts 파일 참고
     // 위의 내용 참고
 ```
 
+7-2. create
+service파일 부분
+```
+    createBoard(title: string, description: string) {
+        const board: Board = {
+            id: uuid(),
+            title,
+            description,
+            status: BoardStatus.PUBLIC
+        };
+        this.boards.push(board);
+        return board;
+    }
+```
+controller 파일 부분
+```
+    @Post()
+    createBoard(
+        @Body('title') title: string,
+        @Body('description') descrtiption: string
+    ): Board {
+        return this.boardsService.createBoard(title,descrtiption)
+    }
+```
+// controller에서 body값을 받을 때는 @Body 데코레이터를 이용한다.
+// @Body([body값으로 올 때 변수명] [body값을 사용할 변수명]) : 타입
+
 8. 모델 정의하기
 // 테이블에 대한 정의
 - board.model.ts 파일 생성
