@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -23,6 +23,7 @@ export class BoardsController {
     // 위의 코드를 dto를 사용하여 짜면 아래와 같다.
 
     @Post()
+    @UsePipes(ValidationPipe)
     createBoard(
         @Body() createBoardDto : CreateBoardDto
         // createBoardDto는 title과 description 인수를 담고 있다.

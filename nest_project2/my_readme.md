@@ -184,6 +184,33 @@ controller 파일 부분
 9. dto 생성하기
 dto 폴더 참고
 생성된 dto는 컨트롤러와 서비스에 적용되어 사용된다.
+// 인숫값에 대한 유효성을 체크하는 것.
+
+10. pipe 만들기
+pipe는 @Injectable 데코레이터로 주석이 달린 클래스이다.
+데이터 형식을 변환하거나 유효성 체크를 위해 사용된다.
+미들웨어라고 생각하면 될 것 같다.
+세 가지 종류의 pipe
+- Handler-level pipes
+@UsePipes() 데코레이터를 통해 생성할 수 있다.해당 파이프는 모든 파라미터에 적용된다.
+- Parameter-level pipes
+특정 파라미터에만 정용된다.
+- Global-level pipes
+
+* nestjs 의 기본 제공 Pipes
+- ValidationPipe
+- ParseIntPipe
+- ParseBoolPipe
+- ParseArrayPipe
+- ParseUUIDPipe
+- DefaultValuePipe
+
+실제 파이프 생성
+> npm i class-validator class-transformer
+// 참고 가능한 공식문서
+// https://github.com/typestack/class-validator#manual-validation
+
+
 
 
 https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
