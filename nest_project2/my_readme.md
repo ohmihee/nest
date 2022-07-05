@@ -223,6 +223,31 @@ transform에서 리턴된 값은 라우트 핸들러에 전달된다.
 12. typeorm 생성 ORM(Object Relational Mapping)
 타입스크립트로 작성된 객체 관계행 매퍼 라이브러리이다.
 // sequelize, prisma 같은 것.
+> npm i @nestjs/typeorm 
+- nestjs에서 typeorm 사용할 수 있도록 연동시켜주는 모듈
+> npm i typeorm pg 
+// typeorm Docs
+
+src 폴더 하위에 configs 폴더를 만들고 그안에 typeorm 관련 설정을 하는 typeorm.config.ts 파일을 생성한다. 
+생성한 typeorm 설정 파일은 애플리케이션에서 사용할 수 있도록 루트 모듈에 등록해준다.
+typeorm.config.ts파일은 루트 모듈에서 import 해와서 추가해준다. app.module.ts 참고
+```
+@Module({
+  imports: [
+    TypeOrmModule.forRoot(typeORMConfig),
+    BoardsModule
+],
+
+})
+```
+
+
+13. 엔티티 생성하기
+board.entity.ts 파일 참고
+
+14. repository 생성하기
+// 데이터베이스와 관련한 작업을 처리하는 곳.
+board.repository.ts 파일 참고
 
 https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
 1:16:19

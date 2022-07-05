@@ -8,7 +8,7 @@ export const typeORMConfig: TypeOrmModuleOptions = {
     host: 'localhost',
     port: 5432,
     username:'mihee',
-    password: 'ajfl1541',
+    password: '',
     database: 'nest_board',
     entities: [__dirname + '/../**/*.entity.{js,ts}'],
     // @Entity : 클래스가 엔티티임으로 나타낼 때 사용, 즉 테이블 생성시
