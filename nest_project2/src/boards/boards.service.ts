@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 // import { randomUUID } from 'crypto';
 import { Board, BoardStatus } from './board.model';
 import { v1 as uuid } from 'uuid';
@@ -30,7 +30,11 @@ export class BoardsService {
 
     getBoardById(getBoardById:GetBoardById):Board {
         const {id} = getBoardById;
-        return this.boards.find((board) => board.id === id);
+        const found =  this.boards.find((board) => board.id === id);
+        if(!found) {
+            throw new NotFoundException()
+        }
+        return found;
     }
 
     getBoardById2(id: string) :Board {
@@ -38,13 +42,14 @@ export class BoardsService {
 
     }
 
-    deleteBoardById(id: string): string {
+    deleteBoardById(id: GetBoardById): string {
         // 아무런 리턴값을 주지 않을때의 타입은 void
-        this.boards = this.boards.filter((board)=>board.id!==id);
+        const found = this.getBoardById(id);
+        this.boards = this.boards.filter((board)=>board.id!==found.id);
         return 'success'
     }
 
-    updateBoardStatus(id: string, status: BoardStatus): Board {
+    updateBoardStatus(id: GetBoardById, status: BoardStatus): Board {
         const board = this.getBoardById(id);
         board.status = status;
         return board;

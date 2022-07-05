@@ -209,9 +209,20 @@ pipe는 @Injectable 데코레이터로 주석이 달린 클래스이다.
 > npm i class-validator class-transformer
 // 참고 가능한 공식문서
 // https://github.com/typestack/class-validator#manual-validation
+// create-board.dto.ts 파일과 컨트롤러 파일 참고
 
+커스텀 파이프 구현
+커스텀 파이프 구현을 위해서는 PipeTransform 인터페이스와 인자를 처리하기 위해 transform메서드가 필요하다. 
+- transform([처리된 인자의 값],[인자에 대한 메타데이터를 포함한 객체])
+transform에서 리턴된 값은 라우트 핸들러에 전달된다.
+ 
+11. postersql 사용
+- postersql
+- pgadmin // workbench와 비슷
 
-
+12. typeorm 생성 ORM(Object Relational Mapping)
+타입스크립트로 작성된 객체 관계행 매퍼 라이브러리이다.
+// sequelize, prisma 같은 것.
 
 https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
 1:16:19
