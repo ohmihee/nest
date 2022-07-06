@@ -249,5 +249,23 @@ board.entity.ts 파일 참고
 // 데이터베이스와 관련한 작업을 처리하는 곳.
 board.repository.ts 파일 참고
 
+15. 기존에 더미데이터로 작업 하던 부분 실 데이터베이스로 사용
+board2.service.ts 파일 참고
+// 기존에 모델로 타입 정의한 부분 -> 엔티티로 대체됨
+// BoardStatus는 그대로 사용
+서비스 파일에서 레포지토리를 사용할수 있도록 constructor를 이용하여 설정해준다.
+```
+@Injectable()
+export class BaordService2 {
+    constructor(
+        @InjectRepository(BoardRepository)
+        private boardRespository: BoardRepository
+    ) {}
+
+} 
+```
+// @InjectRepository데코레이터를 사용하여, 해당 서비스에서 BoardRepository를 사용할 수 있도록 등록하여 준다.
+
+
 https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
 1:16:19
