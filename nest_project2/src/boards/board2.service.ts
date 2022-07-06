@@ -27,6 +27,11 @@ export class BaordService2 {
 
     async deleteBoard(id: number): Promise<void> {
         const result = await this.boardRespository.delete(id);
+        
+        if(result.affected === 0) {
+            throw NotFoundException('')
+        }
+
         console.log(result)
     }
 
