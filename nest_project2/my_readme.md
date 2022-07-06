@@ -266,6 +266,8 @@ export class BaordService2 {
 ```
 // @InjectRepository데코레이터를 사용하여, 해당 서비스에서 BoardRepository를 사용할 수 있도록 등록하여 준다.
 
+16. 서비스에 구현한 데이터베이스 관련 코드 repository파일로 옮김
+
 
 https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
 1:16:19
