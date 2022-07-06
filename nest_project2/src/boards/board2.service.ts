@@ -25,4 +25,9 @@ export class BaordService2 {
         return this.boardRespository.createBoard(createBoardDto)
     }
 
+    async deleteBoard(id: number): Promise<void> {
+        const result = await this.boardRespository.delete(id);
+        console.log(result)
+    }
+
 } 
