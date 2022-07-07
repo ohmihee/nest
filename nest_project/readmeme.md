@@ -244,6 +244,8 @@ config 폴더 안에
 - production.yml : 운영 환경에서 필요한 정보
 파일들을 생성
 
+# 데이터베잉스 연동
+
 
 # 기타 함수 
 [Array].index.of([value]) : 해당 배열 내에서 value의 index를 추출해준다. 배열에 없는 값을 value에 넣으며 -1를 출력한다.

@@ -271,6 +271,17 @@ export class BaordService2 {
 * 데이터 지우는 작업시 remove와 delete 두 함수가 존재하는데
 remove는 반드시 존재하는 데이터에 대해서만 지워야지 존재하지 않는 데이터를 지우려고 하면 에러가 난다. 때문에 데이터가 있는지 확인하는데 한 번 지우는데 두번 접근해야 한다. 반면 delete는  데이터가 있으면 지우고, 없으면 아무런 작용도 하지 않는다. 그러므로 효율 측면에서 remove가 아닌 delete를 사용하는 것이 좋다.
 
+17. 인증 기능 구현 // 3:40:00
+> nest g module auth
+> nest g controller auth --no-spec
+> nest g service auth --no-spec
+
+17-1. User Entity 작성 // user.entity.ts
+17-2. User Repository 작성 // user.repository.ts
+17-3. auth.module.ts 파일에서 imports에 repository 추가해줌.
+
+
+
 
 https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
 1:16:19

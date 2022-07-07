@@ -29,10 +29,20 @@ export class BaordService2 {
         const result = await this.boardRespository.delete(id);
         
         if(result.affected === 0) {
-            throw NotFoundException('')
+            throw new NotFoundException('')
         }
-
         console.log(result)
+    }
+
+    async updateBoardStatus(id: number, status: BoardStatus): Promise<Board> {
+        const board = await this.getBoardById(id);
+        board.status = status;
+        await this.boardRespository.save(board);
+        return board;
+    }
+
+    async getAllBoards(): Promise<Board[]> {
+        return this.boardRespository.find()
     }
 
 } 
