@@ -280,6 +280,35 @@ remove는 반드시 존재하는 데이터에 대해서만 지워야지 존재�
 17-2. User Repository 작성 // user.repository.ts
 17-3. auth.module.ts 파일에서 imports에 repository 추가해줌.
 
+18. 유효성 체크
+> npm i class-validator 
+@IsString()
+@MinLength([min_number])
+@MaxLength([max_number])
+...
+auth-credential.dto.ts 파일 참고
+
+19. 사용자 아이디에 유니크값만 가능하도록 설정
+
+20. 비밀번호 암호화
+> npm i bcryptjs --save
+> npm i --save-dev @types/bcryptjs
+
+21. jwt 생성
+JWT(json web token) = header + payload + verify signature
+- header: 토큰에 대한 메타데이터를 담고 있다.
+- Payload: 유저정보, 만료기간 등에 대한 정보를 담고 있다.
+- Verify Signature: 서명, 헤더 페이로드를 이용하여 만들어진다.
+@nestjs/jwt 
+// nestjs에서 jwt사용을 위해 필요한 모듈
+@nestjs/passport
+// nestjs에서 passport 사용을 위해 필요한 모듈
+passport
+passport-jwt
+> npm i @nestjs/jwt @nestjs/passport passport passport-jwt 
+
+auth.module에서 jwt 사용을 위해 imports에 등록해준다.
+service 파일에서 constructor을 통해 jwtmodule을 사용할 수 있도록 추가해준다.
 
 
 
