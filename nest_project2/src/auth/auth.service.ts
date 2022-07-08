@@ -17,12 +17,17 @@ export class AuthService {
         return this.UserRespository.createUser(authCredentailDto);
     }
 
-    async signIn(authCredentailDto: AuthCredentailDto): Promise<string> {
+    async signIn(authCredentailDto: AuthCredentailDto): Promise<{accessToken: string}> {
         const { username, password } = authCredentailDto;
         const user = await this.UserRespository.findOne({username});
         
         if( user && (await bcrypt.compare(password, user.password))) {
-            return 'login success'
+            // 유저 토큰 생성 ( secret + payload );
+            // payload에 중요 정보는 넣지 않는다.
+            const payload = { username };
+            const accessToken = await this.jwtService.sign(payload);
+            return {accessToken}
+
         } else {
             throw new UnauthorizedException('login failed')
         }
