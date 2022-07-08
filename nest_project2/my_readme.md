@@ -306,11 +306,16 @@ JWT(json web token) = header + payload + verify signature
 passport
 passport-jwt
 > npm i @nestjs/jwt @nestjs/passport passport passport-jwt 
+> npm i @types/passport-jwt
 
 auth.module에서 jwt 사용을 위해 imports에 등록해준다.
 service 파일에서 constructor을 통해 jwtmodule을 사용할 수 있도록 추가해준다.
 
+22. jwt 인증
+jwt.strategy 파일 생성
+해당 JwtStrategy를 사용하기 위해서는 auth.module에 등록해주어야 한다.
 
+
+5:06:36
 
 https://www.youtube.com/watch?v=3JminDpCJNE&t=8s
-1:16:19
